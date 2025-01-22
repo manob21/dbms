@@ -1,6 +1,6 @@
 document.getElementById('ok-button').addEventListener('click', () => {
     const tableName = document.getElementById('table-select').value;
-
+ 
     document.getElementById('table-name').textContent = `Table: ${tableName}`;
 
     fetch('http://127.0.0.1:3000/getTable', { // Use port 3000
