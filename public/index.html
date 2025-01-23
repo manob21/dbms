@@ -11,6 +11,7 @@
   <div class="selecton">
     <p class="para">Select a table: </p>
     <select id="table-select">
+      <option value="none">none</option>
       <option value="doctor">doctor</option>
       <option value="admitted_patient">admitted_patient</option>
       <option value="appointment">appointment</option>
@@ -29,7 +30,7 @@
     </select>
     <button id="ok-button">OK!</button>
   </div>
-  <h2 id="table-name">table name</h2>
+  <h2 id="table-name"></h2>
   <table id="data-table">
     <thead>
       <tr id="table-header"></tr>
@@ -38,13 +39,29 @@
       <!-- Data will be inserted here dynamically -->
     </tbody>
   </table>
+  <div class="bill-section">
+    <p class="para">Enter Patient ID to generate bill: </p>
+    <input type="text" id="patient-id" placeholder="Enter Patient ID">
+    <button id="generate-bill-button">Generate Bill</button>
+  </div>
+  <div id="bill-container">
+    <h2></h2>
+    <table id="bill-table">
+      <thead>
+        <tr id="bill-header"></tr>
+      </thead>
+      <tbody id="bill-body">
+        <!-- Bill details will appear here -->
+      </tbody>
+    </table>
+  </div>
   <br>
   <br>
   <br>
   <br>
   <br>
   <br>
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
 
