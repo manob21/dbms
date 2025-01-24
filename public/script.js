@@ -98,15 +98,40 @@ document.getElementById('generate-bill-button').addEventListener('click', () => 
             // Populate patient details
             const patient = data.patient;
             const patientDetailsHTML = `
-              <p><strong>Patient ID:</strong> ${patient.patient_id}</p>
-              <p><strong>Name:</strong> ${patient.patient_name}</p>
-              <p><strong>City:</strong> ${patient.city}</p>
-              <p><strong>Gender:</strong> ${patient.gender}</p>
-              <p><strong>DOB:</strong> ${patient.DOB}</p>
-              <p><strong>Marital Status:</strong> ${patient.marital_status}</p>
-              <p><strong>Phone:</strong> ${patient.phone_no}</p>
-              <p><strong>Disease:</strong> ${patient.disease}</p>
-              <hr>
+            <table id="t1" border="0">
+                <tr style="border: none;">
+                    <td style="border: none;"><strong>Patient ID</strong></td>
+                    <td style="border: none;"><string> :  </string>${patient.patient_id}</td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;"><strong>Name</strong></td>
+                    <td style="border: none;"><string> :  </string>${patient.patient_name}</td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;"><strong>City</strong></td>
+                    <td style="border: none;"><string> :  </string>${patient.city}</td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;"><strong>Gender</strong></td>
+                    <td style="border: none;"><string> :  </string>${patient.gender}</td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;"><strong>Date of Birth</strong></td>
+                    <td style="border: none;"><string> :  </string>${patient.DOB}</td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;"><strong>Marital Status</strong></td>
+                    <td style="border: none;"><string> :  </string>${patient.marital_status}</td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;"><strong>Phone No.</strong></td>
+                    <td style="border: none;"><string> :  </string>${patient.phone_no}</td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;"><strong>Disease</strong></td>
+                    <td style="border: none;"><string> :  </string>${patient.disease}</td>
+                </tr>
+            </table>
             `;
             newWindow.document.getElementById('patient-details').innerHTML = patientDetailsHTML;
             console.log("patient successfully called");
@@ -124,12 +149,29 @@ document.getElementById('generate-bill-button').addEventListener('click', () => 
                 console.log("hello");
                 const rowHTML = `
                     <tr>
-                        <td>${row.bill_id}</td>
+                        
+                        <td><b>Doctor Charge</b></td>
                         <td>${(parseFloat(row.doc_charge) || 0).toFixed(2)}</td>
+                        
+                    </tr>
+                    <tr>
+                        <td><b>Medicine Charge</b></td>
                         <td>${(parseFloat(row.medicine_charge) || 0).toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Test Charge</b></td>
                         <td>${(parseFloat(row.test_charge) || 0).toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Operation Charge</b></td>
                         <td>${(parseFloat(row.operation_charge) || 0).toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Nursing Charge</b></td>
                         <td>${(parseFloat(row.nursing_charge) || 0).toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Total</b></td>
                         <td>${total.toFixed(2)}</td>
                     </tr>
                 `;

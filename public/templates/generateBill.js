@@ -4,8 +4,11 @@ export function generateBillPage(patientDetails, billDetails) {
       .then(response => response.text())
       .then(template => {
         // Create a new window for the bill
-        const newWindow = window.open('', '_blank');
-        newWindow.document.write(template);
+        // const newWindow = window.open('', '_blank');
+        // newWindow.document.write(template);
+        document.open(); // Opens the current document for writing
+        document.write(template); // Writes the content to the current window
+        document.close();
   
         // Inject patient details
         const patientDetailsHTML = `

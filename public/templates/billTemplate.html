@@ -11,18 +11,25 @@
       width: 210mm;
       height: 297mm;
     }
+    /* #patient-details{
+      background-color: lightblue;
+      text-align: center;
+      line-height: 100px; 
+    } */
     h1, h2 {
       text-align: center;
     }
     table {
-      width: 100%;
       border-collapse: collapse;
       margin: 20px 0;
+    }
+    #t2{
+      width: 100%;
     }
     th, td {
       border: 1px solid #ddd;
       padding: 8px;
-      text-align: center;
+      text-align: left;
     }
     th {
       background-color: #f4f4f4;
@@ -35,16 +42,18 @@
     <!-- Patient details will be injected here -->
   </div>
   <h2>Bill Details</h2>
-  <table>
+  <table id="t2">
     <thead>
       <tr>
-        <th>Bill ID</th>
+        <!-- <th>Bill ID</th>
         <th>Doctor Charge</th>
         <th>Medicine Charge</th>
         <th>Test Charge</th>
         <th>Operation Charge</th>
         <th>Nursing Charge</th>
-        <th>Total</th>
+        <th>Total</th> -->
+        <th>Details</th>
+        <th>amount</th>
       </tr>
     </thead>
     <tbody id="bill-body">
