@@ -167,6 +167,25 @@ app.post('/docs-of-dept', (req, res) => {
   });
 });
 
+app.post('/popular-doc', (req, res) => {
+  const query = `
+    SELECT e.name AS doctor_name
+    FROM appointment a
+    JOIN doctor d ON a.doc_id = d.emp_id
+    JOIN employee e ON d.emp_id = e.id
+    GROUP BY a.doc_id
+    ORDER BY COUNT(a.doc_id) DESC
+    LIMIT 1;
+  `;
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching data:', err);
+      return res.status(500).send('Error fetching data');
+    }
+    res.json(results);  // Send the most popular doctor info as JSON
+  });
+});
 
 
 app.listen(port, () => {

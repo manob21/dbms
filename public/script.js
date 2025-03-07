@@ -186,7 +186,7 @@ document.getElementById('generate-bill-button').addEventListener('click', () => 
         console.error('Error:', error);
         alert('Failed to generate bill.');
       });
-  });
+});
 
 document.getElementById('docs-of-dept-find').addEventListener('click', () => {
     const deptName = document.getElementById('dept-select').value;
@@ -244,6 +244,48 @@ document.getElementById('docs-of-dept-find').addEventListener('click', () => {
             const td = document.createElement('td');
             td.colSpan = 10;
             td.textContent = 'No data found for this table';
+            tr.appendChild(td);
+            tableBody.appendChild(tr);
+        }
+    })
+    .catch(err => {
+        console.error('Error:', err); // Debugging
+        alert(`Something went wrong: ${err.message}`); // Show a user-friendly error message
+    });
+});
+  
+
+document.getElementById('p-doc-find').addEventListener('click', () => {
+    fetch('http://127.0.0.1:3000/popular-doc', {  // Use your backend endpoint
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Received data:', data);  // Debugging
+
+        const tableBody = document.getElementById('popular-doc');
+        tableBody.innerHTML = '';  // Clear previous results
+
+        if (data.length > 0) {
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                const td = document.createElement('td');
+                td.textContent = row.doctor_name;  // Insert doctor name
+                tr.appendChild(td);
+                tableBody.appendChild(tr);
+            });
+        } else {
+            const tr = document.createElement('tr');
+            const td = document.createElement('td');
+            td.textContent = 'No data found';
             tr.appendChild(td);
             tableBody.appendChild(tr);
         }
