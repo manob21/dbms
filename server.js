@@ -271,6 +271,106 @@ app.post('/getmedicine', (req, res) => {
   });
 });
 
+app.post('/common-des', (req, res) => {
+  const query = `
+    SELECT disease, COUNT(*) AS total_patients
+    FROM patient
+    GROUP BY disease
+    ORDER BY total_patients DESC
+    LIMIT 1;
+  `;
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching data:', err);
+      return res.status(500).send('Error fetching data');
+    }
+    res.json(results);  // Send the most popular doctor info as JSON
+  });
+});
+
+app.post('/n-p-ratio', (req, res) => {
+  const query = `
+    SELECT d.name AS department_name,
+       COUNT(DISTINCT n.emp_id) AS total_nurses,
+       COUNT(DISTINCT a.p_id) AS total_patients,
+       ROUND(COUNT(DISTINCT a.p_id) / NULLIF(COUNT(DISTINCT n.emp_id), 0)) AS nurse_to_patient_ratio
+      FROM department d
+      LEFT JOIN nurse n ON d.dept_id = n.dept_id
+      LEFT JOIN doctor doc ON d.dept_id = doc.dept_id
+      LEFT JOIN appointment a ON doc.emp_id = a.doc_id
+      GROUP BY d.name
+      ORDER BY nurse_to_patient_ratio desc;
+  `;
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching data:', err);
+      return res.status(500).send('Error fetching data');
+    }
+    res.json(results);  // Send the most popular doctor info as JSON
+  });
+});
+
+app.post('/d-p-ratio', (req, res) => {
+  const query = `
+    SELECT d.name AS department_name,
+       COUNT(DISTINCT doc.emp_id) AS total_doctors,
+       COUNT(DISTINCT a.p_id) AS total_patients,
+       ROUND(COUNT(DISTINCT a.p_id) / NULLIF(COUNT(DISTINCT doc.emp_id), 0), 0) AS doctor_to_patient_ratio
+        FROM department d
+        LEFT JOIN doctor doc ON d.dept_id = doc.dept_id
+        LEFT JOIN appointment a ON doc.emp_id = a.doc_id
+        GROUP BY d.name
+        ORDER BY doctor_to_patient_ratio desc;
+  `;
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching data:', err);
+      return res.status(500).send('Error fetching data');
+    }
+    res.json(results);  // Send the most popular doctor info as JSON
+  });
+});
+
+app.post('/docs-pref', (req, res) => {
+  const deptName = req.body.dept; // Get the table name from the request
+
+  if (!deptName) {
+    return res.status(400).send('Table name is required');
+  }
+  if(deptName === 'none'){
+    return res.json([]);
+  }
+
+  
+  // Construct and execute the query using parameterized queries to prevent SQL injection
+  const query = `
+    WITH pref_table AS (
+    SELECT p.disease, 
+           doc.emp_id AS doctor_id, 
+           COUNT(a.p_id) AS total_appointments
+    FROM appointment a
+    JOIN patient p ON a.p_id = p.id
+    JOIN doctor doc ON a.doc_id = doc.emp_id
+    WHERE p.disease = ? 
+    GROUP BY p.disease, doc.emp_id
+    ORDER BY total_appointments DESC
+    )
+    SELECT pt.disease, e.name AS doctor_name, pt.total_appointments
+    FROM pref_table pt
+    JOIN employee e ON e.id = pt.doctor_id;
+  `; 
+  db.query(query, [deptName], (err, results) => {
+    if (err) {
+      console.error('Error fetching table data:', err);
+      return res.status(500).send('Error fetching table data');
+    }
+    res.json(results); // Send the data back as JSON
+  });
+});
+
 
 
 app.listen(port, () => {

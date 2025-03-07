@@ -157,3 +157,65 @@ h2{
   margin: 10px 0 0 0;
 }
 
+#common{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+#common-d-find{
+  margin: 10px 0 10px 0;
+  height: 42px;
+}
+
+#n-p-ratio{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+#n-p-ratio-find{
+  width: 100px;
+  margin: 10px 0 0 20px;
+  height: 42px;
+}
+
+#n-p-discard{
+  height:42px;
+  margin: 10px 0 0 0;
+}
+
+#d-p-ratio{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+#d-p-ratio-find{
+  width: 100px;
+  margin: 10px 0 0 20px;
+  height: 42px;
+}
+
+#d-p-discard{
+  height:42px;
+  margin: 10px 0 0 0;
+}
+
+#docs-pref{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+#disease-select{
+  font-size: 20px;
+  padding: 0px;
+  margin: 10px;
+}
+
+#docs-pref-find{
+  width: 100px;
+  margin: 10px 0 0 20px;
+  height: 42px;
+}
