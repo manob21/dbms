@@ -122,6 +122,51 @@ app.post('/generateBill', (req, res) => {
   });
 });
 
+app.post('/docs-of-dept', (req, res) => {
+  const deptName = req.body.dept; // Get the table name from the request
+
+  if (!deptName) {
+    return res.status(400).send('Table name is required');
+  }
+  if(deptName === 'none'){
+    return res.json([]);
+  }
+
+  // Validate the table name against a list of allowed tables
+  const allowedDepts = [
+    'Oncology',
+    'Neurology',
+    'Cardiology',
+    'Pediatrics',
+    'Orthopedics',
+    'Gastroenterology',
+    'Dermatology',
+    'Radiology',
+    'Psychiatry',
+    'Nephrology',
+  ];
+
+  if (!allowedDepts.includes(deptName)) {
+    return res.status(400).send('Invalid table name');
+  }
+
+  // Construct and execute the query using parameterized queries to prevent SQL injection
+  const query = `
+    SELECT e.name, dp.name AS department
+    FROM doctor d
+    JOIN employee e ON d.emp_id = e.id
+    join department dp on d.dept_id = dp.dept_id 
+    WHERE dp.name = ?
+  `; 
+  db.query(query, [deptName], (err, results) => {
+    if (err) {
+      console.error('Error fetching table data:', err);
+      return res.status(500).send('Error fetching table data');
+    }
+    res.json(results); // Send the data back as JSON
+  });
+});
+
 
 
 app.listen(port, () => {

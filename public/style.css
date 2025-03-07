@@ -64,3 +64,21 @@ h2{
   margin: 10px 0 0 20px;
   height: 42px;
 }
+
+#docs-of-dept{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+#dept-select{
+  font-size: 20px;
+  padding: 0px;
+  margin: 10px;
+}
+
+#docs-of-dept-find{
+  width: 100px;
+  margin: 10px 0 0 20px;
+  height: 42px;
+}
