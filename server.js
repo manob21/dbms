@@ -187,6 +187,44 @@ app.post('/popular-doc', (req, res) => {
   });
 });
 
+app.post('/t-pat', (req, res) => {
+  const query = `
+    SELECT p.id, p.name, a.app_date, a.app_time, e.name AS doctor_name
+    FROM appointment a
+    JOIN patient p ON a.p_id = p.id
+    JOIN doctor d ON a.doc_id = d.emp_id
+    JOIN employee e ON d.emp_id = e.id
+    WHERE a.app_date = CURDATE();
+  `;
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching data:', err);
+      return res.status(500).send('Error fetching data');
+    }
+    res.json(results);  // Send the most popular doctor info as JSON
+  });
+});
+
+app.post('/d-p-list', (req, res) => {
+  const query = `
+    SELECT e.name AS doctor_name, COUNT(a.app_id) AS total_appointments
+    FROM doctor d
+    JOIN employee e ON d.emp_id = e.id
+    LEFT JOIN appointment a ON d.emp_id = a.doc_id
+    GROUP BY e.name
+    ORDER BY total_appointments DESC;
+  `;
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching data:', err);
+      return res.status(500).send('Error fetching data');
+    }
+    res.json(results);  // Send the most popular doctor info as JSON
+  });
+});
+
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

@@ -82,3 +82,38 @@ h2{
   margin: 10px 0 0 20px;
   height: 42px;
 }
+
+#to-p-list{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+#t-p-list-find{
+  width: 100px;
+  margin: 10px 0 0 20px;
+  height: 42px;
+}
+
+#t-p-discard{
+  height:42px;
+  margin: 10px 0 0 0;
+}
+
+#d-a-total{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+#d-a-total-find{
+  width: 100px;
+  margin: 10px 0 0 20px;
+  height: 42px;
+}
+
+#d-a-discard{
+  height:42px;
+  margin: 10px 0 0 0;
+}
+
