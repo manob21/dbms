@@ -117,3 +117,43 @@ h2{
   margin: 10px 0 0 0;
 }
 
+#cu-a-patient{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+#c-a-patient-find{
+  width: 100px;
+  margin: 10px 0 0 20px;
+  height: 42px;
+}
+
+#c-a-discard{
+  height:42px;
+  margin: 10px 0 0 0;
+}
+
+.medicine-section{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+#mpatient-id{
+  font-size: 20px;
+  padding: 0px;
+  margin: 10px;
+}
+
+#get-medicine-button{
+  width: 150px;
+  margin: 10px 0 0 20px;
+  height: 42px;
+}
+
+#medicine-discard{
+  height:42px;
+  margin: 10px 0 0 0;
+}
+

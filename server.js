@@ -225,6 +225,53 @@ app.post('/d-p-list', (req, res) => {
   });
 });
 
+app.post('/c-a-list', (req, res) => {
+  const query = `
+    SELECT p.id, p.name, a.room_no, a.building_name, a.date_of_add 
+    FROM admitted_patient a
+    JOIN patient p ON a.p_id = p.id
+    WHERE a.date_of_dis IS NULL;
+  `;
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching data:', err);
+      return res.status(500).send('Error fetching data');
+    }
+    res.json(results);  // Send the most popular doctor info as JSON
+  });
+});
+
+app.post('/getmedicine', (req, res) => {
+  const { patientId } = req.body;
+
+  if (!patientId) {
+    return res.status(400).json({ error: 'Patient ID is required' });
+  }
+
+  // Query to get patient details
+  const patientQuery = `
+    SELECT p.name AS patient_name, m.name AS medicine_name ,m.disease_type as disease_type
+    FROM suggested_medicine sm
+    JOIN prescription pr ON sm.app_id = pr.app_id
+    JOIN medicine m ON sm.medicine_id = m.medicine_id
+    JOIN appointment a ON pr.app_id = a.app_id
+    JOIN patient p ON a.p_id = p.id
+    WHERE p.id = ? ;
+  `;
+  
+
+  // Execute both queries in sequence
+  db.query(patientQuery, [patientId], (err, patientResults) => {
+    if (err) {
+      console.error('Error fetching data:', err);
+      return res.status(500).send('Error fetching data');
+    }
+    res.json(patientResults); 
+  });
+});
+
+
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
