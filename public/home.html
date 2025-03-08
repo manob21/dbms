@@ -30,27 +30,31 @@
                     Home <span>&#9662;</span>
                 </button>
                 <ul id="homeSubMenu" class="ml-4 hidden">
-                    <li><a href="home.html" class="block py-1 px-4 rounded hover:bg-blue-600">Home Overview</a></li>
-                    <li><a href="index.html" class="block py-1 px-4 rounded hover:bg-blue-600">different information</a></li>
+                    <li><a href="basicinfo.html" class="block py-1 px-4 rounded hover:bg-blue-600">Basic Info</a></li>
+                    <li><a href="admitted.html" class="block py-1 px-4 rounded hover:bg-blue-600">Admitted Patient</a></li>
+                    <li><a href="today.html" class="block py-1 px-4 rounded hover:bg-blue-600">todays appointment</a></li>
+                    <li><a href="index.html" class="block py-1 px-4 rounded hover:bg-blue-600">Popular</a></li>
                 </ul>
             </li>
             <li class="mb-2">
                 <button onclick="toggleMenu('aboutSubMenu')" class="w-full text-left py-2 px-4 rounded flex justify-between items-center hover:bg-blue-700">
-                    About Us <span>&#9662;</span>
+                    About Hospital <span>&#9662;</span>
                 </button>
                 <ul id="aboutSubMenu" class="ml-4 hidden">
                     <li><a href="mission.html" class="block py-1 px-4 rounded hover:bg-blue-600">Our Mission</a></li>
                     <li><a href="team.html" class="block py-1 px-4 rounded hover:bg-blue-600">Our Team</a></li>
+                    <li><a href="pnratio.html" class="block py-1 px-4 rounded hover:bg-blue-600">P-N ratio</a></li>
+                    <li><a href="pdratio.html" class="block py-1 px-4 rounded hover:bg-blue-600">P-D ratio</a></li>
                 </ul>
             </li>
             <li class="mb-2">
                 <button onclick="toggleMenu('servicesSubMenu')" class="w-full text-left py-2 px-4 rounded flex justify-between items-center hover:bg-blue-700">
-                    Services <span>&#9662;</span>
+                    Bill <span>&#9662;</span>
                 </button>
                 <ul id="servicesSubMenu" class="ml-4 hidden">
-                    <li><a href="emergency.html" class="block py-1 px-4 rounded hover:bg-blue-600">Emergency Care</a></li>
-                    <li><a href="surgery.html" class="block py-1 px-4 rounded hover:bg-blue-600">Surgery</a></li>
-                    <li><a href="outpatient.html" class="block py-1 px-4 rounded hover:bg-blue-600">Outpatient Services</a></li>
+                    <li><a href="generate.html" class="block py-1 px-4 rounded hover:bg-blue-600">Generate Bill</a></li>
+                    <!-- <li><a href="surgery.html" class="block py-1 px-4 rounded hover:bg-blue-600">Surgery</a></li>
+                    <li><a href="outpatient.html" class="block py-1 px-4 rounded hover:bg-blue-600">Outpatient Services</a></li> -->
                 </ul>
             </li>
             <li class="mb-2">
@@ -60,6 +64,18 @@
                 <ul id="doctorsSubMenu" class="ml-4 hidden">
                     <li><a href="specialists.html" class="block py-1 px-4 rounded hover:bg-blue-600">Specialists</a></li>
                     <li><a href="appointment.html" class="block py-1 px-4 rounded hover:bg-blue-600">Book an Appointment</a></li>
+                    <li><a href="doctorapp.html" class="block py-1 px-4 rounded hover:bg-blue-600">Doctor wise Appointment</a></li>
+                    <li><a href="docpreference.html" class="block py-1 px-4 rounded hover:bg-blue-600">Doctor preferences</a></li>
+                </ul>
+            </li>
+            <li class="mb-2">
+                <button onclick="toggleMenu('MedicineSubMenu')" class="w-full text-left py-2 px-4 rounded flex justify-between items-center hover:bg-blue-700">
+                    Medicine <span>&#9662;</span>
+                </button>
+                <ul id="MedicineSubMenu" class="ml-4 hidden">
+                    <li><a href="suggestedmed.html" class="block py-1 px-4 rounded hover:bg-blue-600">Suggested Medicine</a></li>
+                    <li><a href="medpreference.html" class="block py-1 px-4 rounded hover:bg-blue-600">Medicine preferences</a></li>
+                    
                 </ul>
             </li>
         </ul>
@@ -72,7 +88,45 @@
             At Famous Mithu's Hospital, we are committed to providing the highest quality healthcare services. 
             Explore our services, meet our experienced doctors, and book an appointment easily.
         </p>
+    
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 justify-center">
+            <!-- Card 1: Cardiology -->
+            <div class="bg-white shadow-lg rounded-2xl p-6 w-72 h-72">
+                <h2 class="text-xl font-semibold mb-2">Cardiology</h2>
+                <p class="text-gray-600 mb-4">
+                    Expert heart care with advanced diagnostics and treatment options.
+                </p>
+                <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                    Learn More
+                </button>
+            </div>
+    
+            <!-- Card 2: Orthopedics -->
+            <div class="bg-white shadow-lg rounded-2xl p-6 w-72 h-72">
+                <h2 class="text-xl font-semibold mb-2">Orthopedics</h2>
+                <p class="text-gray-600 mb-4">
+                    Comprehensive bone and joint care, including surgery and rehabilitation.
+                </p>
+                <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                    Learn More
+                </button>
+            </div>
+    
+            <!-- Card 3: Pediatrics -->
+            <div class="bg-white shadow-lg rounded-2xl p-6 w-72 h-72">
+                <h2 class="text-xl font-semibold mb-2">Pediatrics</h2>
+                <p class="text-gray-600 mb-4">
+                    Compassionate care for children with specialized treatment plans.
+                </p>
+                <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                    Learn More
+                </button>
+            </div>
+        </div>
     </main>
+    
+    
+    
 </div>
 
 <!-- JavaScript for Collapsible Menus -->

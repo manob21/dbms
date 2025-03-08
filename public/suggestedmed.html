@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appointment Form</title>
+<link rel="stylesheet" href="style.css"
+</head>
+<body>
+
+    <header class="bg-white shadow-md p-4 flex items-center justify-center">
+        <img src="logo.png" alt="Famous Mithu's Hospital Logo" class="w-24 h-24 object-cover" width="120px">
+    </header>
+    <br>
+    <h1>The Famous Mithu's Hospital</h1>
+    <div class="medicine-section">
+        <p class="para">Enter Patient ID to get suggested medicine : </p>
+        <input type="text" id="mpatient-id" placeholder="Enter Patient ID">
+        <button id="get-medicine-button">Get medicine</button>
+        <button id="medicine-discard">Discard</button>
+      </div>
+      <div id="medicine-container">
+        <h2></h2>
+        <table id="medicine-table">
+          <thead>
+            <tr id="medicine-header"></tr>
+          </thead>
+          <tbody id="medicine-body">
+            <!-- Bill details will appear here -->
+          </tbody>
+        </table>
+      </div>
+    <script type="module" src="suggestedmed.js"></script>
+
+</body>
+</html>

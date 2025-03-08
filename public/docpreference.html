@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appointment Form</title>
+<link rel="stylesheet" href="style.css"
+</head>
+<body>
+
+    <header class="bg-white shadow-md p-4 flex items-center justify-center">
+        <img src="logo.png" alt="Famous Mithu's Hospital Logo" class="w-24 h-24 object-cover" width="120px">
+    </header>
+    <br>
+    <h1>The Famous Mithu's Hospital</h1>
+    <div id="docs-pref">
+        <p class="para">Patient Preferences for Doctor for a specific Disease</p>
+        <select id="disease-select" name="disease">
+          <option value="none">none</option>
+          <option value="Diabetes">Diabetes</option>
+          <option value="Hypertension">Hypertension</option>
+          <option value="Asthma">Asthma</option>
+          <option value="Arthritis">Arthritis</option>
+          <option value="Heart Disease">Heart Disease</option>
+          <option value="Kidney Disease">Kidney Disease</option>
+          <option value="Pneumonia">Pneumonia</option>
+          <option value="Anemia">Anemia</option>
+          <option value="Flu">Flu</option>
+          <option value="Tuberculosis">Tuberculosis</option>
+          <option value="Lung Disease">Lung Disease</option>
+          <option value="Liver Disease">Liver Disease</option>
+          <option value="Bronchitis">Bronchitis</option>
+          <option value="Epilepsy">Epilepsy</option>
+          <option value="Typhoid">Typhoid</option>
+      </select>
+        <button id="docs-pref-find">Find</button>
+      </div>
+      <table id="docs-pref-table">
+        <thead>
+          <tr id="docs-pref-header"></tr>
+        </thead>
+        <tbody id="docs-pref-body">
+          
+        </tbody>
+      </table>
+    <script type="module" src="docpreference.js"></script>
+
+</body>
+</html>
