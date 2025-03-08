@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="style.css"
 </head>
 <body>
+  <header class="bg-white shadow-md p-4 flex items-center justify-center">
+    <img src="logo.png" alt="Famous Mithu's Hospital Logo" class="w-24 h-24 object-cover" width="120px">
+  </header>
+  <br>
   <h1>The Famous Mithu's Hospital</h1>
   <div class="selecton">
     <p class="para">Select a table: </p>
@@ -55,32 +59,7 @@
       </tbody>
     </table>
   </div>
-  <div id="docs-of-dept">
-    <p class="para">The doctors list in dept : </p>
-    <select id="dept-select">
-      <option value="none">none</option>
-      <option value="Oncology">Oncology</option>
-      <option value="Neurology">Neurology</option>
-      <option value="Cardiology">Cardiology</option>
-      <option value="Pediatrics">Pediatrics</option>
-      <option value="Orthopedics">Orthopedics</option>
-      <option value="Gastroenterology">Gastroenterology</option>
-      <option value="Dermatology">Dermatology</option>
-      <option value="Radiology">Radiology</option>
-      <option value="Psychiatry">Psychiatry</option>
-      <option value="Nephrology">Nephrology</option>
-    </select>
-    <button id="docs-of-dept-find">Find</button>
-  </div>
-  <h2 id="docs-of-dept-table-name"></h2>
-  <table id="docs-of-dept-table">
-    <thead>
-      <tr id="docs-of-dept-header"></tr>
-    </thead>
-    <tbody id="docs-of-dept-body">
-      
-    </tbody>
-  </table>
+  
   
   <table id="polar-doc-table">
     <tr>
@@ -193,7 +172,7 @@
   </table>
   <br>
   <div id="docs-pref">
-    <p class="para">The doctors list in dept : </p>
+    <p class="para">Patient Preferences for Doctor for a specific Disease</p>
     <select id="disease-select" name="disease">
       <option value="none">none</option>
       <option value="Diabetes">Diabetes</option>
@@ -219,6 +198,37 @@
       <tr id="docs-pref-header"></tr>
     </thead>
     <tbody id="docs-pref-body">
+      
+    </tbody>
+  </table>
+  <br>
+  <div id="med-pref">
+    <p class="para">top 3 most prescribed medicines for a specific disease</p>
+    <select id="mdisease-select" name="disease">
+      <option value="none">none</option>
+      <option value="Diabetes">Diabetes</option>
+      <option value="Hypertension">Hypertension</option>
+      <option value="Asthma">Asthma</option>
+      <option value="Arthritis">Arthritis</option>
+      <option value="Heart Disease">Heart Disease</option>
+      <option value="Kidney Disease">Kidney Disease</option>
+      <option value="Pneumonia">Pneumonia</option>
+      <option value="Anemia">Anemia</option>
+      <option value="Flu">Flu</option>
+      <option value="Tuberculosis">Tuberculosis</option>
+      <option value="Lung Disease">Lung Disease</option>
+      <option value="Liver Disease">Liver Disease</option>
+      <option value="Bronchitis">Bronchitis</option>
+      <option value="Epilepsy">Epilepsy</option>
+      <option value="Typhoid">Typhoid</option>
+  </select>
+    <button id="med-pref-find">Find</button>
+  </div>
+  <table id="med-pref-table">
+    <thead>
+      <tr id="med-pref-header"></tr>
+    </thead>
+    <tbody id="med-pref-body">
       
     </tbody>
   </table>

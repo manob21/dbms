@@ -1,5 +1,6 @@
 import { generateBillPage } from './templates/generateBill.js';
 
+
 document.getElementById('ok-button').addEventListener('click', () => {
     const tableName = document.getElementById('table-select').value;
  
@@ -11,7 +12,7 @@ document.getElementById('ok-button').addEventListener('click', () => {
         document.getElementById('table-body').innerHTML = '';
         return;
     }
-
+    console.log("reached here");
     fetch('http://127.0.0.1:3000/getTable', { // Use port 3000
         method: 'POST', // POST request to send the table name
         headers: {
@@ -67,8 +68,9 @@ document.getElementById('ok-button').addEventListener('click', () => {
 });
 
 document.getElementById('generate-bill-button').addEventListener('click', () => {
+    console.log("reached here");
     const patientId = document.getElementById('patient-id').value;
-  
+    console.log("reached here");
     if (!patientId) {
       alert('Please enter a valid Patient ID.');
       return;
@@ -798,5 +800,96 @@ document.getElementById('docs-pref-find').addEventListener('click', () => {
         console.error('Error:', err); // Debugging
         alert(`Something went wrong: ${err.message}`); // Show a user-friendly error message
     });
+});
+
+document.getElementById('med-pref-find').addEventListener('click', () => {
+    const deptName = document.getElementById('mdisease-select').value;
+ 
+    if(deptName === 'none'){
+        document.getElementById('med-pref-table').textContent = '';
+        document.getElementById('med-pref-header').innerHTML = '';
+        document.getElementById('med-pref-body').innerHTML = '';
+        return;
+    }
+
+    fetch('http://127.0.0.1:3000/med-pref', { // Use port 3000
+        method: 'POST', // POST request to send the table name
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ dept: deptName }) // Send tableName as part of the request body
+    })
+    .then(response => {
+        if (!response.ok) { // Check if the response was successful
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Received data:', data); // Debugging
+
+        const tableHeader = document.getElementById('med-pref-header');
+        const tableBody = document.getElementById('med-pref-body');
+
+        tableHeader.innerHTML = '';
+        tableBody.innerHTML = '';
+
+        if (data.length > 0) {
+            const headers = Object.keys(data[0]);
+            headers.forEach(header => {
+                const th = document.createElement('th');
+                th.textContent = header;
+                tableHeader.appendChild(th);
+            });
+
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                headers.forEach(header => {
+                    const td = document.createElement('td');
+                    td.textContent = row[header];
+                    tr.appendChild(td);
+                });
+                tableBody.appendChild(tr);
+            });
+        } else {
+            const tr = document.createElement('tr');
+            const td = document.createElement('td');
+            td.colSpan = 10;
+            td.textContent = 'No data found for this table';
+            tr.appendChild(td);
+            tableBody.appendChild(tr);
+        }
+    })
+    .catch(err => {
+        console.error('Error:', err); // Debugging
+        alert(`Something went wrong: ${err.message}`); // Show a user-friendly error message
+    });
+});
+
+document.getElementById('appointment-form');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = {
+            app_id: form.app_id.value,
+            doc_id: form.doc_id.value,
+            p_id: form.p_id.value,
+            app_date: form.app_date.value,
+            app_time: form.app_time.value
+        };
+
+        try {
+            const response = await fetch('/add-appointment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+            alert(result.message);
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to add appointment!');
+        }
 });
   

@@ -371,6 +371,54 @@ app.post('/docs-pref', (req, res) => {
   });
 });
 
+app.post('/med-pref', (req, res) => {
+  const deptName = req.body.dept; // Get the table name from the request
+
+  if (!deptName) {
+    return res.status(400).send('Table name is required');
+  }
+  if(deptName === 'none'){
+    return res.json([]);
+  }
+
+  
+  // Construct and execute the query using parameterized queries to prevent SQL injection
+  const query = `
+    SELECT m.name AS medicine_name, COUNT(sm.medicine_id) AS total_prescribed
+      FROM suggested_medicine sm
+      JOIN prescription pr ON sm.app_id = pr.app_id
+      JOIN medicine m ON sm.medicine_id = m.medicine_id
+      WHERE pr.disease_type = ? 
+      GROUP BY m.name
+      ORDER BY total_prescribed DESC
+      LIMIT 3;
+  `; 
+  db.query(query, [deptName], (err, results) => {
+    if (err) {
+      console.error('Error fetching table data:', err);
+      return res.status(500).send('Error fetching table data');
+    }
+    res.json(results); // Send the data back as JSON
+  });
+});
+
+app.post('/add-appointment', (req, res) => {
+  const { app_id, doc_id, p_id, app_date, app_time } = req.body;
+
+  const insertQuery = `
+      INSERT INTO appointment (app_id, doc_id, p_id, app_date, app_time)
+      VALUES (?, ?, ?, ?, ?)
+  `;
+
+  db.query(insertQuery, [app_id, doc_id, p_id, app_date, app_time], (err, result) => {
+      if (err) {
+          console.error('Error inserting data:', err);
+          return res.status(500).json({ message: 'Failed to add appointment!' });
+      }
+      res.json({ message: 'Appointment added successfully!' });
+  });
+});
+
 
 
 app.listen(port, () => {

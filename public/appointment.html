@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appointment Form</title>
+<link rel="stylesheet" href="style.css"
+</head>
+<body>
+
+    <header class="bg-white shadow-md p-4 flex items-center justify-center">
+        <img src="logo.png" alt="Famous Mithu's Hospital Logo" class="w-24 h-24 object-cover" width="120px">
+      </header>
+      <br>
+      <h1>The Famous Mithu's Hospital</h1>
+    <form id="appointment-form">
+        <label for="app_id">Appointment ID:</label>
+        <input type="text" id="app_id" name="app_id" required>
+
+        <label for="doc_id">Doctor ID:</label>
+        <input type="text" id="doc_id" name="doc_id" required>
+
+        <label for="p_id">Patient ID:</label>
+        <input type="text" id="p_id" name="p_id" required>
+
+        <label for="app_date">Appointment Date:</label>
+        <input type="date" id="app_date" name="app_date" required>
+
+        <label for="app_time">Appointment Time:</label>
+        <input type="time" id="app_time" name="app_time" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>

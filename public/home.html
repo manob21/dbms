@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Famous Mithu's Hospital - Home</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    .hidden { display: none; }
+    .rotate-90 { transform: rotate(90deg); }
+</style>
+</head>
+
+<body class="bg-gray-100">
+
+<!-- Top Logo Section -->
+<header class="bg-white shadow-md p-4 flex items-center justify-center">
+    <img src="logo.png" alt="Famous Mithu's Hospital Logo" class="w-24 h-24 object-cover">
+</header>
+
+<div class="flex">
+
+    <!-- Primary Navigation Bar with Collapsible Submenus -->
+    <nav class="bg-blue-900 text-white w-64 min-h-screen p-4">
+        <h2 class="text-xl font-bold mb-6">Navigation</h2>
+        <ul>
+            <li class="mb-2">
+                <button onclick="toggleMenu('homeSubMenu')" class="w-full text-left py-2 px-4 rounded flex justify-between items-center hover:bg-blue-700">
+                    Home <span>&#9662;</span>
+                </button>
+                <ul id="homeSubMenu" class="ml-4 hidden">
+                    <li><a href="home.html" class="block py-1 px-4 rounded hover:bg-blue-600">Home Overview</a></li>
+                    <li><a href="index.html" class="block py-1 px-4 rounded hover:bg-blue-600">different information</a></li>
+                </ul>
+            </li>
+            <li class="mb-2">
+                <button onclick="toggleMenu('aboutSubMenu')" class="w-full text-left py-2 px-4 rounded flex justify-between items-center hover:bg-blue-700">
+                    About Us <span>&#9662;</span>
+                </button>
+                <ul id="aboutSubMenu" class="ml-4 hidden">
+                    <li><a href="mission.html" class="block py-1 px-4 rounded hover:bg-blue-600">Our Mission</a></li>
+                    <li><a href="team.html" class="block py-1 px-4 rounded hover:bg-blue-600">Our Team</a></li>
+                </ul>
+            </li>
+            <li class="mb-2">
+                <button onclick="toggleMenu('servicesSubMenu')" class="w-full text-left py-2 px-4 rounded flex justify-between items-center hover:bg-blue-700">
+                    Services <span>&#9662;</span>
+                </button>
+                <ul id="servicesSubMenu" class="ml-4 hidden">
+                    <li><a href="emergency.html" class="block py-1 px-4 rounded hover:bg-blue-600">Emergency Care</a></li>
+                    <li><a href="surgery.html" class="block py-1 px-4 rounded hover:bg-blue-600">Surgery</a></li>
+                    <li><a href="outpatient.html" class="block py-1 px-4 rounded hover:bg-blue-600">Outpatient Services</a></li>
+                </ul>
+            </li>
+            <li class="mb-2">
+                <button onclick="toggleMenu('doctorsSubMenu')" class="w-full text-left py-2 px-4 rounded flex justify-between items-center hover:bg-blue-700">
+                    Our Doctors <span>&#9662;</span>
+                </button>
+                <ul id="doctorsSubMenu" class="ml-4 hidden">
+                    <li><a href="specialists.html" class="block py-1 px-4 rounded hover:bg-blue-600">Specialists</a></li>
+                    <li><a href="appointment.html" class="block py-1 px-4 rounded hover:bg-blue-600">Book an Appointment</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow p-8">
+        <h1 class="text-3xl font-bold mb-4">Welcome to Famous Mithu's Hospital</h1>
+        <p class="text-gray-700 mb-6">
+            At Famous Mithu's Hospital, we are committed to providing the highest quality healthcare services. 
+            Explore our services, meet our experienced doctors, and book an appointment easily.
+        </p>
+    </main>
+</div>
+
+<!-- JavaScript for Collapsible Menus -->
+<script>
+    function toggleMenu(menuId) {
+        const menu = document.getElementById(menuId);
+        menu.classList.toggle('hidden');
+    }
+</script>
+
+</body>
+</html>

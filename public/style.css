@@ -1,5 +1,23 @@
 h1{
     text-align: center;
+    font-size: 50px;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+form { max-width: 400px; margin: auto; }
+    label { display: block; margin-top: 10px; }
+    input, button { width: 100%; padding: 5px; margin-top: 5px; }
+
+header{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background-color: rgb(223, 229, 233);
+  padding: 20px 0 20px 0;
 }
 
 table {
@@ -219,3 +237,23 @@ h2{
   margin: 10px 0 0 20px;
   height: 42px;
 }
+
+#med-pref{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+#mdisease-select{
+  font-size: 20px;
+  padding: 0px;
+  margin: 10px;
+}
+
+#med-pref-find{
+  width: 100px;
+  margin: 10px 0 0 20px;
+  height: 42px;
+}
+
+
